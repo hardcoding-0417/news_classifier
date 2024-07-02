@@ -54,5 +54,9 @@ sudo apt-get install g++ openjdk-11-jdk python3-dev python3-pip curl
 - [TensorFlow Tutorials](https://www.tensorflow.org/tutorials)
 - [Konlpy Documentation](http://konlpy.org/ko/latest/)
 
+
 실제 데이터로 작업해보면 딥러닝을 쉽게 이해할 수 있게 됩니다.  
 하나씩 따라해보세요.
+
+extra의 두 스크립트는 OpenAI의 임베딩 모델을 사용하여,
+원 핫 인코딩이 아니라 밀집 벡터를 만들어서 GRU에 넣는 예시입니다.
