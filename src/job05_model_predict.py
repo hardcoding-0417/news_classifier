@@ -8,17 +8,17 @@ import pickle
 import random
 
 # 훈련된 모델 로드
-model = load_model(r'.\models\news_category_classification_model_gru_0.6772305965423584.keras')
+model = load_model('../models/news_category_classification_model_gru_0.6772305965423584.keras')
 
 # 데이터 로드
-news_data = pd.read_csv('./crawling_data/naver_news_titles_20240626.csv')
+news_data = pd.read_csv('../crawling_data/naver_news_titles_20240626.csv')
 X_data = news_data['Title']
 y_data = news_data['Category']
 
 # 전처리 함수
 def preprocess_text(text):
     okt = Okt()
-    stopwords = pd.read_csv('./stopwords.csv', index_col=0)
+    stopwords = pd.read_csv('../stopwords.csv', index_col=0)
     
     text = okt.morphs(text, stem=True)
     text = [word for word in text if len(word) > 1 and word not in stopwords['stopword'].values]
@@ -27,7 +27,7 @@ def preprocess_text(text):
 X_data = X_data.apply(preprocess_text)
 
 # 토큰화 객체 로드
-with open('./models/news_token.pickle', 'rb') as f:
+with open('../models/news_token.pickle', 'rb') as f:
     token = pickle.load(f)
 
 # 텍스트 데이터 토큰화 및 패딩
@@ -35,7 +35,7 @@ tokened_X = token.texts_to_sequences(X_data)
 X_pad = pad_sequences(tokened_X, maxlen=30)
 
 # 레이블 인코더 로드
-with open('./models/encoder.pickle', 'rb') as f:
+with open('../models/encoder.pickle', 'rb') as f:
     encoder = pickle.load(f)
 
 # 추론
