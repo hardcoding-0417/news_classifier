@@ -3,7 +3,7 @@
 
 ## RNN을 활용한 뉴스 카테고리 분류 실습
 
-이 레포는 학생들이 RNN(Recurrent Neural Network)을 쉽게 이해하고 실습할 수 있도록 
+이 레포는 학생들이 RNN(Recurrent Neural Network)을 쉽게 이해하고 실습할 수 있도록  
 뉴스 제목을 분류하는 모델을 제작하는 프로젝트가 담긴 자료실입니다.
 
 천천히 따라하며 파이썬, 크롤링, 자연어 전처리, RNN 학습의 기초를 배워보세요.
@@ -54,4 +54,5 @@ sudo apt-get install g++ openjdk-11-jdk python3-dev python3-pip curl
 - [TensorFlow Tutorials](https://www.tensorflow.org/tutorials)
 - [Konlpy Documentation](http://konlpy.org/ko/latest/)
 
-실제 데이터로 작업해보면 딥러닝을 쉽게 이해할 수 있게 됩니다. 하나씩 따라해보세요.
+실제 데이터로 작업해보면 딥러닝을 쉽게 이해할 수 있게 됩니다.  
+하나씩 따라해보세요.
