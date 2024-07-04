@@ -5,7 +5,7 @@ from tensorflow.keras.layers import *
 import pickle
 
 # 데이터 로드
-with open('../crawling_data/news_data_max_30_wordsize_13129.pkl', 'rb') as f:
+with open('.//models/preprocessed_data/news_data_max_30_wordsize_13129.pkl', 'rb') as f:
     X_train, X_test, Y_train, Y_test = pickle.load(f)
 print(X_train.shape, Y_train.shape)
 print(X_test.shape, Y_test.shape)
