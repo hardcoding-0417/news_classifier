@@ -13,7 +13,13 @@ import os
 pd.set_option('display.unicode.east_asian_width', True)
 
 # 데이터 로드
-input_file = '..\\crawling_data/naver_news_titles_cleaned20240701.csv'
+input_file = '..//crawling_data/naver_news_titles_cleaned20240701.csv'
+
+# 윈도우 버전 데이터 로드
+# current_dir = os.path.dirname(os.path.abspath(__file__))
+# input_file = os.path.join(current_dir, '..', 'crawling_data', 'naver_news_titles_cleaned20240704.csv')
+
+
 df = pd.read_csv(input_file)
 print(df.head())
 df.info()
@@ -35,7 +41,7 @@ okt = Okt()
 X = X.apply(lambda x: okt.morphs(x, stem=True))  # 제목의 텍스트를 형태소로 분석
 
 # 불용어 제거
-stopwords_file = '..\\stopwords.csv'
+stopwords_file = '../stopwords.csv'
 stopwords = pd.read_csv(stopwords_file, index_col=0)
 X = X.apply(lambda x: ' '.join([word for word in x if len(word) > 1 and word not in stopwords['stopword'].values]))
 
@@ -56,7 +62,7 @@ print("Train shape:", X_train.shape, Y_train.shape)  # 학습 데이터의 형�
 print("Test shape:", X_test.shape, Y_test.shape)  # 테스트 데이터의 형태 출력
 
 # 전처리된 데이터 저장
-output_dir = '..\\models'  # 출력 디렉토리 설정
+output_dir = '../models'  # 출력 디렉토리 설정
 os.makedirs(os.path.join(output_dir, 'preprocessed_data'), exist_ok=True)  # 데이터 저장 디렉토리 생성
 xy = (X_train, X_test, Y_train, Y_test)  # 데이터 묶기
 with open(os.path.join(output_dir, 'preprocessed_data', f'news_data_max_{max_len}_wordsize_{wordsize}.pkl'), 'wb') as f:
