@@ -19,6 +19,9 @@ input_file = '..//crawling_data/naver_news_titles_cleaned20240701.csv'
 # current_dir = os.path.dirname(os.path.abspath(__file__))
 # input_file = os.path.join(current_dir, '..', 'crawling_data', 'naver_news_titles_cleaned20240704.csv')
 
+# 윈도우에서 상위 폴더로 이동하는 또다른 방법
+# os.chdir('..')
+
 
 df = pd.read_csv(input_file)
 print(df.head())
