@@ -1,17 +1,17 @@
 import pandas as pd
 import numpy as np
 from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from konlpy.tag import Okt
 import pickle
 import random
+import os
 
 # 훈련된 모델 로드
-model = load_model('../models/news_category_classification_model_gru_0.6772305965423584.keras')
+model = load_model('../models/news_category_classification_model_gru_0.69.keras')
 
 # 데이터 로드
-news_data = pd.read_csv('../crawling_data/naver_news_titles_20240626.csv')
+news_data = pd.read_csv('../crawling_data/naver_news_titles_cleaned20240704.csv')
 X_data = news_data['Title']
 y_data = news_data['Category']
 
@@ -26,17 +26,13 @@ def preprocess_text(text):
 
 X_data = X_data.apply(preprocess_text)
 
-# 토큰화 객체 로드
-with open('../models/news_token.pickle', 'rb') as f:
-    token = pickle.load(f)
+# 전처리된 데이터 로드
+with open('../models/preprocessed_data/news_data_max_30_wordsize_13129.pkl', 'rb') as f:
+    X_train, X_test, Y_train, Y_test, encoder, tokenizer = pickle.load(f)
 
 # 텍스트 데이터 토큰화 및 패딩
-tokened_X = token.texts_to_sequences(X_data)
+tokened_X = tokenizer.texts_to_sequences(X_data)
 X_pad = pad_sequences(tokened_X, maxlen=30)
-
-# 레이블 인코더 로드
-with open('../models/encoder.pickle', 'rb') as f:
-    encoder = pickle.load(f)
 
 # 추론
 y_prob = model.predict(X_pad)
