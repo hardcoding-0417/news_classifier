@@ -29,9 +29,6 @@ labeled_y = encoder.fit_transform(Y)
 label = encoder.classes_
 print("Labels:", label)
 
-# 원-핫 인코딩
-onehot_y = to_categorical(labeled_y)
-
 # 형태소 분석 및 불용어 제거
 okt = Okt()
 stopwords = pd.read_csv('../stopwords.csv', index_col=0)
@@ -48,6 +45,9 @@ print("Vocabulary size:", wordsize)
 # 패딩
 max_len = max(len(x) for x in tokened_x)
 x_pad = pad_sequences(tokened_x, max_len)
+
+# 원-핫 인코딩
+onehot_y = to_categorical(labeled_y)
 
 # 데이터 분할
 X_train, X_test, Y_train, Y_test = train_test_split(x_pad, onehot_y, test_size=0.2)
