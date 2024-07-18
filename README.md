@@ -26,11 +26,11 @@ pip install pandas numpy selenium tensorflow konlpy matplotlib
 - Konlpy: 한국어 자연어 처리를 위해 필요합니다.
 - Matplotlib: 결과를 시각화하기 위해 사용됩니다.
 
-Konlpy의 종속성 중 하나인 JPype1의 설치를 위해 아래의 명령어가 필요할 수도 있습니다.
-
+# 기타 패키지 설치
 ```bash
 sudo apt-get install g++ openjdk-11-jdk python3-dev python3-pip curl
 ```
+Konlpy의 종속성 중 하나인 JPype1를 사용하려면 위 패키지들을 설치해야 합니다.
 
 ## 디렉토리 구조
 
